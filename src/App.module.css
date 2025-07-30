@@ -66,6 +66,98 @@
   50% { background-position: 100% 50%; }
 }
 
+/* 全局增强动画 */
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+  }
+  50% { 
+    filter: brightness(1.2) drop-shadow(0 0 25px rgba(0, 212, 255, 0.8));
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes dataFlow {
+  0% { opacity: 0; transform: translateY(20px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes rotate3d {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+  40% { transform: translate(-2px, -2px); filter: hue-rotate(180deg); }
+  60% { transform: translate(2px, 2px); filter: hue-rotate(270deg); }
+  80% { transform: translate(2px, -2px); filter: hue-rotate(360deg); }
+}
+
+/* 涟漪效果 */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 数据加载动画 */
+@keyframes dataLoad {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* 全局交互增强 */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 悬浮效果增强 */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+}
+
+/* 光束扫描效果 */
+@keyframes scanBeam {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* 粒子背景动画 */
+@keyframes particleFloat {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(-100vh) translateX(50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 @keyframes nebula {
   0%, 100% { opacity: 0.08; transform: rotate(0deg) scale(1); }
   33% { opacity: 0.12; transform: rotate(120deg) scale(1.05); }
@@ -1232,4 +1324,181 @@
 .button:focus {
   outline: 2px solid #0071e3;
   outline-offset: 2px;
+}
+
+/* === Features Module === */
+.featuresModule {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 120px 0;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.featureCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.featureIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.featureTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 15px 0;
+}
+
+.featureDescription {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* === Watch Module === */
+.watchModule {
+  background: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 120px 0;
+}
+
+.watchFlow {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 60px;
+  position: relative;
+}
+
+.watchStep {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.watchStep:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateX(10px);
+}
+
+.watchMockup {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.watchFace {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 50%;
+  border: 8px solid #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 50px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.watchFace::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  animation: rotate3d 10s linear infinite;
+}
+
+.watchDisplay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.aiFace {
+  font-size: 48px;
+  margin-bottom: 10px;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.heartRate {
+  font-size: 14px;
+  color: #ff6b6b;
+  margin-bottom: 10px;
+}
+
+.message {
+  font-size: 12px;
+  color: #4ecdc4;
+  font-style: italic;
+}
+
+/* === Companion Card Styles === */
+.companionName {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 8px 0;
+}
+
+.companionTitle {
+  font-size: 16px;
+  color: #0071e3;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+.companionDescription {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #86868b;
+  margin: 0 0 16px 0;
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.personalityBadge {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: inline-block;
 }

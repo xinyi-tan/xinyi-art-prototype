@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import BlindBox from './BlindBox';
+import AIChat from './AIChat';
+import WatchDisplay from './WatchDisplay';
+import DataVisualization from './DataVisualization';
+import PersonalizationConfig from './PersonalizationConfig';
 // 使用public路径，便于部署
 const moonRabbitImg = '/assets/MoonRabbitpixelart.png';
 const sushiImg = '/assets/sushipixelart.png';
@@ -198,6 +202,18 @@ function App() {
         <section id="blindbox" className={styles.blindBoxSection}>
           <BlindBox />
         </section>
+
+        {/* AI Chat Experience */}
+        <AIChat />
+
+        {/* Watch Display */}
+        <WatchDisplay />
+
+        {/* Data Visualization */}
+        <DataVisualization />
+
+        {/* Personalization Config */}
+        <PersonalizationConfig />
 
         {/* Companions Showcase */}
         <section className={`${styles.homepageSection} ${styles.showcaseModule}`}>

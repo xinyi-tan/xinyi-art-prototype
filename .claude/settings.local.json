@@ -22,7 +22,12 @@
       "Bash(.copy-assets.bat)",
       "Bash(grep:*)",
       "Bash(npm install:*)",
-      "Bash(start test-chest.html)"
+      "Bash(start test-chest.html)",
+      "Bash(npm:*)",
+      "Bash(/e/Application/npm start:*)",
+      "Bash(./node_modules/.bin/react-scripts:*)",
+      "Bash(touch:*)",
+      "Bash(curl:*)"
     ],
     "deny": []
   }

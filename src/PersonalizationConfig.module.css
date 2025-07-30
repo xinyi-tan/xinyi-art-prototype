@@ -1,0 +1,711 @@
+/* PersonalizationConfig.module.css */
+.configSection {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 120px 0;
+  min-height: 100vh;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionTitle {
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 20px 0;
+  text-align: center;
+  background: linear-gradient(45deg, #00D4FF, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionSubtitle {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  text-align: center;
+}
+
+.configContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* 预览区域 */
+.previewArea {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.watchPreview {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+}
+
+.watchFace {
+  width: 320px;
+  height: 400px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 45px;
+  border: 6px solid #00D4FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.watchFace::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  animation: rotate3d 8s linear infinite;
+}
+
+.watchDisplay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80%;
+  padding: 20px;
+}
+
+.timeDisplay {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.time {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.date {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-top: 5px;
+}
+
+.aiDisplay {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.aiAvatar {
+  font-size: 36px;
+  margin-bottom: 8px;
+  display: block;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.aiGreeting {
+  font-size: 11px;
+  color: #4ecdc4;
+  font-style: italic;
+  line-height: 1.3;
+  max-width: 120px;
+}
+
+.healthData {
+  display: flex;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.healthItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.healthIcon {
+  font-size: 14px;
+}
+
+.healthItem span:last-child {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.statusIndicators {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.statusDot.connected {
+  background: #10B981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.statusDot.secure {
+  background: #F59E0B;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.statusDot.active {
+  background: #00D4FF;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.previewLabel {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.configSummary {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.summaryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 20px 0;
+}
+
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summaryLabel {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.summaryValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.colorIndicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 配置面板 */
+.configPanel {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.configTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.configTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.configTab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #fff;
+}
+
+.configTab.active {
+  background: linear-gradient(45deg, #00D4FF, #8B5CF6);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.tabIcon {
+  font-size: 16px;
+}
+
+.configContent {
+  margin-bottom: 30px;
+}
+
+.contentTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 25px 0;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.optionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.optionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.optionLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.optionStatus {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.optionControl {
+  min-height: 40px;
+}
+
+/* 控件样式 */
+.colorPicker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.colorOption {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.colorOption:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.colorOption.selected {
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.selectInput {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.selectInput:focus {
+  outline: none;
+  border-color: #00D4FF;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.aiSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aiOption {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aiOption:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.aiOption.selected {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: #00D4FF;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+.aiAvatar {
+  font-size: 24px;
+  min-width: 24px;
+}
+
+.aiInfo {
+  flex: 1;
+}
+
+.aiName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.aiDesc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00D4FF;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.multiSelect {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.multiOption {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.multiOption:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.multiOption.selected {
+  background: #00D4FF;
+  border-color: #00D4FF;
+  color: #fff;
+}
+
+/* 操作按钮 */
+.configActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.resetButton, .previewButton, .saveButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.resetButton {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.previewButton {
+  background: linear-gradient(45deg, #8B5CF6, #EC4899);
+  color: #fff;
+}
+
+.previewButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.saveButton {
+  background: linear-gradient(45deg, #00D4FF, #10B981);
+  color: #fff;
+}
+
+.saveButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.actionIcon {
+  font-size: 16px;
+}
+
+/* 推荐配置 */
+.recommendedConfigs {
+  max-width: 1400px;
+  margin: 60px auto 0;
+  padding: 0 20px;
+}
+
+.recommendedTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.configCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.configCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.configCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.cardIcon {
+  font-size: 36px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.cardDesc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.applyButton {
+  background: linear-gradient(45deg, #00D4FF, #8B5CF6);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.applyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+/* 响应式设计 */
+@media only screen and (max-width: 1068px) {
+  .configContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .watchFace {
+    width: 280px;
+    height: 350px;
+  }
+  
+  .configCards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 734px) {
+  .configSection {
+    padding: 80px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 36px;
+  }
+  
+  .configContainer {
+    padding: 0 15px;
+  }
+  
+  .watchPreview {
+    padding: 25px;
+  }
+  
+  .watchFace {
+    width: 240px;
+    height: 300px;
+  }
+  
+  .configPanel {
+    padding: 20px;
+  }
+  
+  .configTabs {
+    gap: 8px;
+  }
+  
+  .configTab {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  .configActions {
+    flex-direction: column;
+  }
+  
+  .resetButton, .previewButton, .saveButton {
+    min-width: auto;
+  }
+  
+  .configCards {
+    grid-template-columns: 1fr;
+  }
+  
+  .recommendedConfigs {
+    margin-top: 40px;
+  }
+}
+
+/* 动画效果 */
+@keyframes rotate3d {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    filter: brightness(1) drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+  }
+  50% { 
+    filter: brightness(1.2) drop-shadow(0 0 25px rgba(0, 212, 255, 0.8));
+  }
+}

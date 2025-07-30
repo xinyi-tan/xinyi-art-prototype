@@ -1,0 +1,371 @@
+/* NEXUS Watch Display Component */
+.watchSection {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.watchSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  animation: titlePulse 3s ease-in-out infinite alternate;
+}
+
+.sectionSubtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes titlePulse {
+  from { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+  to { text-shadow: 0 0 40px rgba(139, 92, 246, 0.8); }
+}
+
+.watchContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* 手表框架 */
+.watchFrame {
+  position: relative;
+  width: 420px;
+  height: 520px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.watchScreen {
+  width: 380px;
+  height: 470px;
+  background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+  border-radius: 45px;
+  border: 3px solid #333;
+  position: relative;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 
+    0 0 40px rgba(0, 212, 255, 0.4),
+    inset 0 0 25px rgba(0, 0, 0, 0.5);
+  animation: watchGlow 4s ease-in-out infinite alternate;
+  transform: rotateX(5deg) rotateY(-5deg);
+}
+
+@keyframes watchGlow {
+  from { box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+  to { box-shadow: 0 0 50px rgba(139, 92, 246, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.5); }
+}
+
+.watchBand {
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  right: -15px;
+  height: 30px;
+  background: linear-gradient(90deg, #333, #555, #333);
+  transform: translateY(-50%);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* 状态栏 */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #00D4FF;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.time {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.battery {
+  opacity: 0.8;
+}
+
+/* AI区域 */
+.aiSection {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.aiAvatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: avatarFloat 3s ease-in-out infinite;
+}
+
+@keyframes avatarFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.aiFace {
+  font-size: 45px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+}
+
+.aiGlow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  opacity: 0.3;
+  animation: aiPulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes aiPulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+.aiName {
+  color: #00D4FF;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* 消息区域 */
+.messageArea {
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.messageBubble {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4;
+  font-style: italic;
+  animation: messageGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes messageGlow {
+  from { color: rgba(255, 255, 255, 0.8); }
+  to { color: rgba(0, 212, 255, 1); }
+}
+
+/* 生物数据 */
+.bioData {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bioItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bioIcon {
+  font-size: 20px;
+}
+
+.bioValue {
+  color: #00D4FF;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 操作按钮 */
+.actionButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.actionBtn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionBtn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00D4FF;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+/* 手表内规格显示 */
+.specsDisplay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.specsDisplayTitle {
+  color: #00D4FF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.specsDisplayList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.specsDisplayItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.specsDisplayLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.specsDisplayValue {
+  color: #00D4FF;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  text-align: right;
+}
+
+/* 滚动条样式 */
+.specsDisplayList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.specsDisplayList::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.specsDisplayList::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+.specsDisplayList::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.8);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .watchSection {
+    padding: 80px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 36px;
+  }
+  
+  .watchContainer {
+    flex-direction: column;
+    gap: 60px;
+  }
+  
+  .watchFrame {
+    width: 360px;
+    height: 440px;
+  }
+  
+  .watchScreen {
+    width: 320px;
+    height: 390px;
+    padding: 20px;
+  }
+  
+  .specsPanel {
+    padding: 30px 20px;
+  }
+}

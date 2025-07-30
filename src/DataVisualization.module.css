@@ -1,0 +1,660 @@
+/* Data Visualization Component */
+.dataSection {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.dataSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  animation: dataGlow 4s ease-in-out infinite alternate;
+}
+
+.sectionSubtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes dataGlow {
+  from { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+  to { text-shadow: 0 0 40px rgba(139, 92, 246, 0.8); }
+}
+
+.dataContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* 选项卡导航 */
+.tabNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.tabButton:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  color: #00D4FF;
+  transform: translateY(-2px);
+}
+
+.tabButton.active {
+  border-color: #00D4FF;
+  background: rgba(0, 212, 255, 0.1);
+  color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.tabIcon {
+  font-size: 16px;
+}
+
+/* 选项卡内容 */
+.tabContent {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 生态概览样式 */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.statCard {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px rgba(var(--accent-color), 0.3);
+}
+
+.statIcon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--accent-color), 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent-color);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.statGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-color), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.statCard:hover .statGlow {
+  opacity: 0.1;
+}
+
+/* 趋势图表 */
+.chartArea {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chartTitle {
+  color: #00D4FF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.trendChart {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 8px;
+  height: 200px;
+}
+
+.chartBar {
+  width: 20px;
+  background: linear-gradient(to top, #00D4FF, #8B5CF6);
+  border-radius: 4px 4px 0 0;
+  animation: barGrow 1s ease-out forwards;
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+@keyframes barGrow {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* 稀有度分布样式 */
+.rarityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.rarityCard {
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.rarityCard:hover {
+  border-color: var(--rarity-color);
+  box-shadow: 0 10px 30px rgba(var(--rarity-color), 0.3);
+}
+
+.rarityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rarityLevel {
+  color: var(--rarity-color);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.rarityCount {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.rarityBar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.rarityFill {
+  height: 100%;
+  background: var(--rarity-color);
+  border-radius: 10px;
+  animation: fillBar 1.5s ease-out;
+}
+
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+.rarityPercentage {
+  text-align: right;
+  color: var(--rarity-color);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+/* 饼图 */
+.pieChart {
+  display: flex;
+  justify-content: center;
+}
+
+.pieContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.pieSvg {
+  width: 100%;
+  height: 100%;
+  animation: pieRotate 2s ease-out;
+}
+
+@keyframes pieRotate {
+  from { transform: rotate(-90deg) scale(0); }
+  to { transform: rotate(-90deg) scale(1); }
+}
+
+.pieCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.pieCenterValue {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: #00D4FF;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.pieCenterLabel {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 5px;
+}
+
+/* AI活跃度样式 */
+.aiStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.aiCard {
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.aiCard:hover {
+  border-color: var(--ai-color);
+  box-shadow: 0 10px 30px rgba(var(--ai-color), 0.3);
+}
+
+.aiHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.aiName {
+  color: var(--ai-color);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.aiActivity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.activityDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ai-color);
+  animation: activityPulse 2s ease-in-out infinite;
+}
+
+@keyframes activityPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.aiStats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.aiStat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aiStatLabel {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.aiStatValue {
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+.aiActivityBar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.aiActivityFill {
+  height: 100%;
+  background: var(--ai-color);
+  border-radius: 10px;
+  animation: fillActivity 2s ease-out;
+}
+
+@keyframes fillActivity {
+  from { width: 0; }
+}
+
+/* AI分析 */
+.aiAnalytics {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.analyticsTitle {
+  color: #00D4FF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.analyticsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.analyticsCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.analyticsIcon {
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.analyticsValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00D4FF;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.analyticsLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+}
+
+/* 网络状态样式 */
+.networkGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.networkCard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+}
+
+.networkCard:hover {
+  transform: translateY(-5px);
+  border-color: #00D4FF;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+}
+
+.networkIcon {
+  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.networkContent {
+  flex: 1;
+}
+
+.networkMetric {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.networkValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 5px;
+}
+
+.networkTrend {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.networkTrend.positive {
+  color: #10B981;
+}
+
+.networkTrend.negative {
+  color: #EF4444;
+}
+
+/* 网络状态 */
+.networkStatus {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statusTitle {
+  color: #00D4FF;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.statusIndicators {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.statusDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--status-color);
+  animation: statusPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--status-color); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 10px transparent; }
+}
+
+.statusValue {
+  margin-left: auto;
+  color: var(--status-color);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .dataSection {
+    padding: 80px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 36px;
+  }
+  
+  .tabNavigation {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tabButton {
+    min-width: 200px;
+    justify-content: center;
+  }
+  
+  .statsGrid,
+  .rarityGrid,
+  .aiStatsGrid,
+  .networkGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pieContainer {
+    width: 250px;
+    height: 250px;
+  }
+}

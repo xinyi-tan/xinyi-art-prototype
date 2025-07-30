@@ -1,0 +1,398 @@
+/* AI Chat Experience Module */
+.aiChatSection {
+  padding: 120px 0;
+  background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #302b63 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.aiChatSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionTitle {
+  font-size: 48px;
+  font-weight: 800;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  animation: titleGlow 4s ease-in-out infinite alternate;
+}
+
+.sectionSubtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@keyframes titleGlow {
+  from { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+  to { text-shadow: 0 0 30px rgba(139, 92, 246, 0.8); }
+}
+
+.chatContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* AI选择器 */
+.aiSelector {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.aiButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 200px;
+}
+
+.aiButton:hover {
+  border-color: var(--ai-color);
+  box-shadow: 0 0 20px rgba(var(--ai-color), 0.3);
+  transform: translateY(-2px);
+}
+
+.aiButton.active {
+  border-color: var(--ai-color);
+  box-shadow: 0 0 30px rgba(var(--ai-color), 0.5);
+  background: rgba(var(--ai-color), 0.1);
+}
+
+.aiAvatar {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.aiInfo {
+  text-align: left;
+}
+
+.aiName {
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.aiTitle {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* 聊天框 */
+.chatBox {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messagesContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  display: flex;
+  gap: 12px;
+  max-width: 80%;
+  animation: messageSlide 0.3s ease-out;
+}
+
+.message.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message.ai {
+  align-self: flex-start;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.messageAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.messageContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.messageText {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 16px;
+  color: #fff;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.message.user .messageText {
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+}
+
+.messageTime {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 6px;
+  padding: 0 16px;
+}
+
+/* 打字指示器 */
+.typingIndicator {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px 20px;
+  border-radius: 16px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.typingIndicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00D4FF;
+  animation: typing 1.5s ease-in-out infinite;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1); }
+}
+
+/* 输入区域 */
+.inputContainer {
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inputBox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.messageInput {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  height: 44px;
+}
+
+.messageInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.messageInput:focus {
+  outline: none;
+  border-color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.sendButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sendButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sendIcon {
+  font-size: 16px;
+}
+
+.inputHint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* 体验提示 */
+.experienceTips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.tipCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tipCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.tipIcon {
+  font-size: 32px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tipContent h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px 0;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.tipContent p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .aiChatSection {
+    padding: 80px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 36px;
+  }
+  
+  .aiSelector {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .aiButton {
+    min-width: 280px;
+  }
+  
+  .chatBox {
+    height: 500px;
+  }
+  
+  .experienceTips {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .tipCard {
+    padding: 20px;
+  }
+}
