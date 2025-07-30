@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>宝箱透明测试</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff0000, #0000ff);
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .test-container {
+            background: #000;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        
+        .chest-img {
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin: 20px auto;
+            background: transparent !important;
+        }
+        
+        .checkerboard {
+            background-image: 
+                linear-gradient(45deg, #808080 25%, transparent 25%),
+                linear-gradient(-45deg, #808080 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #808080 75%),
+                linear-gradient(-45deg, transparent 75%, #808080 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 宝箱透明度测试</h1>
+    
+    <div class="test-container">
+        <h2>黑色背景测试</h2>
+        <img src="src/assets/mysterioustreasurechestpixelart.png" class="chest-img" alt="宝箱">
+    </div>
+    
+    <div class="checkerboard">
+        <h2>棋盘格背景测试</h2>
+        <img src="src/assets/mysterioustreasurechestpixelart.png" class="chest-img" alt="宝箱">
+    </div>
+    
+    <div style="background: linear-gradient(red, blue); padding: 40px;">
+        <h2>渐变背景测试</h2>
+        <img src="src/assets/mysterioustreasurechestpixelart.png" class="chest-img" alt="宝箱">
+    </div>
+    
+    <div style="margin: 40px; padding: 20px; background: #fff; color: #000;">
+        <h3>诊断信息：</h3>
+        <p>如果看到白色方块围绕宝箱，说明图片本身有白色背景</p>
+        <p>如果宝箱轮廓清晰可见，说明图片透明正常</p>
+        <p>请检查：</p>
+        <ul>
+            <li>图片文件是否为PNG格式</li>
+            <li>PNG是否有透明通道</li>
+            <li>文件是否损坏</li>
+        </ul>
+    </div>
+</body>
+</html>
